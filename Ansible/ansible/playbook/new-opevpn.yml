@@ -1,4 +1,16 @@
 ---
+- name: "server"
+  vars_prompt:
+   - name: "server"
+     prompt: "Enter server host"
+     private: false
+
+- name: "client"
+  vars_prompt:
+   - name: "client"
+     prompt: "Enter client host"
+     private: false
+
 - name: "host to openvpn install"
   hosts: "{{ select_hosts }}"
   become: true

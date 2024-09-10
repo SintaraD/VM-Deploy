@@ -8,13 +8,13 @@
   template: 
    src: vpn_c.j2
    dest: /etc/openvpn/openvpn{{tun_num}}.conf
-  delegate_to: client
+  delegate_to: {{client}}
 
 - name: copy config openvpn
   template: 
    src: vpn_s.j2
    dest: /etc/openvpn/openvpn{{tun_num}}.conf
-  delegate_to: server
+  delegate_to: {{server}}
 
 - name: Keygen
   ansible.builtin.shell: openvpn --genkey --secret /etc/openvpn/openvpn{{tun_num}}.key
