@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Vars
+ipt='/sbin/iptables'
+isp='enp0s3'
+
+# Flash all rules
+$ipt -t filter -F
+$ipt -t filter -X
+$ipt -t nat -F
+$ipt -t nat -X
+$ipt -t mangle -F
+$ipt -t mangle -X
+
+# Default policy
+$ipt -P FORWARD DROP
+$ipt -P INPUT DROP
+$ipt -P OUTPUT DROP
+
+# SSH
+$ipt -A INPUT -p tcp --dport 22 -i $isp -j ACCEPT
+$ipt -A OUTPUT -p tcp --sport 22 -o $isp -j ACCEPT
+
+# DNS
+$ipt -A OUTPUT -p udp --dport 53 -o $isp 8.8.8.8 -j ACCEPT
+$ipt -A INPUT -p udp --sport 53 -i $isp 8.8.8.8 -j ACCEPT
+
+# OpenVPN
+$ipt -A INPUT -p udp --dport {{rprt}} -i $isp -j ACCEPT
+$ipt -A OUTPUT -p udp --sport {{lprt}} -o $isp -j ACCEPT
+
+# NAT
+$ipt -A FORWARD -i tun{{tun_num}} -o $isp -j ACCEPT
+$ipt -A FORWARD -o tun{{tun_num}} -i $isp -j ACCEPT
+$ipt -t nat -A POSTROUTING -o $isp -j MASQUERADE
