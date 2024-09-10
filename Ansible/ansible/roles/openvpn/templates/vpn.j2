@@ -1,0 +1,17 @@
+dev tun0
+remote {{puk}}
+rport {}
+lport {}
+ifconfig {}
+proto tcp-client
+tun-mtu 1500
+compress lz4
+cipher AES-128-CBC
+persist-key
+persist-tun
+keepalive 8 30
+sndbuf 0
+rcvbuf 0
+verb 3
+secret /etc/openvpn/openvpn.key
+log-append /etc/openvpn/openvpn.log

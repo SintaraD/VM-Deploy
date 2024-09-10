@@ -1,0 +1,10 @@
+---
+- name: install openvpn
+  ansible.builtin.apt:
+    name: openvpn
+    state: present
+
+- name: copy config openvpn
+  copy:
+   src: "
+   dest: '/etc/openvpn/vpn.conf'

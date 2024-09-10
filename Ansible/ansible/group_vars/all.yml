@@ -1,0 +1,7 @@
+---
+remote_server: 89.248.207.89
+r_port: 35678
+l_port: 40987
+ifc: 10.0.5.1
+ifs: 10.0.5.2
+tun_number: 1
