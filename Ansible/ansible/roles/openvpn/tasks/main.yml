@@ -5,6 +5,25 @@
     state: present
 
 - name: copy config openvpn
-  copy:
-   src: "
-   dest: '/etc/openvpn/vpn.conf'
+  template: 
+   src: vpn_c.j2
+   dest: /etc/openvpn/openvpn{{tun_num}}.conf
+  delegate_to: client
+
+- name: copy config openvpn
+  template: 
+   src: vpn_s.j2
+   dest: /etc/openvpn/openvpn{{tun_num}}.conf
+  delegate_to: server
+
+- name: Keygen
+  ansible.builtin.shell: openvpn --genkey --secret /etc/openvpn/openvpn{{tun_num}}.key
+  delegate_to: 127.0.0.1
+
+- name: copy config openvpn
+  copy: 
+   src: /etc/openvpn/openvpn{{tun_num}}.key
+   dest: /etc/openvpn/openvpn{{tun_num}}.key
+
+- name: start openvpn config
+  ansible.builtin.shell: systemctl start openvpn@openvpn{{tun_num}}

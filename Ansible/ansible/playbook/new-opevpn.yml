@@ -1,0 +1,55 @@
+---
+- name: "host to openvpn install"
+  hosts: "{{ select_hosts }}"
+  become: true
+  vars_prompt:
+   - name: "select_hosts"
+     prompt: "Enter hostname or group"
+     private: false
+
+- name: "tun number"
+  vars_prompt:
+   - name: "tun_num"
+     prompt: "Enter tun number"
+     private: false
+
+- name: "ip remote"
+  vars_prompt:
+   - name: "ip_srv"
+     prompt: "Enter ip remote"
+     private: false
+
+- name: "rport"
+  vars_prompt:
+   - name: "rprt"
+     prompt: "Enter rport"
+     private: false
+
+- name: "lportt"
+  vars_prompt:
+   - name: "lprt"
+     prompt: "Enter lport"
+     private: false
+
+- name: "ifconfig_l"
+  vars_prompt:
+   - name: "ip_l"
+     prompt: "Enter ip local"
+     private: false
+
+- name: "ifconfig_r"
+  vars_prompt:
+   - name: "ip_r"
+     prompt: "Enter ip remote"
+     private: false
+
+- name: "proto tcp"
+  vars_prompt:
+   - name: "type_tcp"
+     prompt: "Enter type tcp"
+     private: false
+
+  roles:
+   - { role: "../roles/roles_DebARM/setting_new_server",                             tags: ["setting_server"] }
+
+
