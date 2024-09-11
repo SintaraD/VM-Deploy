@@ -1,7 +1,38 @@
 ---
-- name: root
-  hosts: all
-  become: true
+
+- name:  Openvpn
+  hosts:  all
+  become:  yes
+
+  tasks:
+  - block: # -- Srv side tasks --
+
+      - name: Copy serv part
+        copy: 
+         src: "{{ item }}" 
+         dest: "{{ dst }}"
+        loop:
+            - "{{ collector }}"
+            - "{{ scraper }}"
+
+     - name: generate .service for scraper
+        template:
+             src: /home/scraper.j2 
+             dest: /lib/systemd/system/scraper.service
+
+      - name: apt update
+        apt:
+         update_cache: yes
+         cache_valid_time: 3600
+
+      - name: Grafana dwnld prers
+        apt:
+         name: "{{ item }}"
+        loop:
+            - adduser
+            - libfontconfig1
+            - musl
+
 
 - name: "host to openvpn install"
   hosts: "{{ select_hosts }}"
