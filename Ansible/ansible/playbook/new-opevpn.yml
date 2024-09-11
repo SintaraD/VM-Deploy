@@ -1,15 +1,7 @@
 ---
-- name: "server"
-  vars_prompt:
-   - name: "server"
-     prompt: "Enter server host"
-     private: false
-
-- name: "client"
-  vars_prompt:
-   - name: "client"
-     prompt: "Enter client host"
-     private: false
+- name: root
+  hosts: all
+  become: true
 
 - name: "host to openvpn install"
   hosts: "{{ select_hosts }}"
@@ -19,43 +11,64 @@
      prompt: "Enter hostname or group"
      private: false
 
+- name: "server"
+  hosts: all
+  vars_prompt:
+   - name: "server"
+     prompt: "Enter server host"
+     private: false
+
+- name: "client"
+  hosts: all
+  vars_prompt:
+   - name: "client"
+     prompt: "Enter client host"
+     private: false
+
 - name: "tun number"
+  hosts: all
   vars_prompt:
    - name: "tun_num"
      prompt: "Enter tun number"
      private: false
 
 - name: "ip remote"
+  hosts: all
   vars_prompt:
    - name: "ip_srv"
      prompt: "Enter ip remote"
      private: false
 
 - name: "rport"
+  hosts: all
   vars_prompt:
    - name: "rprt"
      prompt: "Enter rport"
      private: false
 
 - name: "lportt"
+  hosts: all
   vars_prompt:
    - name: "lprt"
      prompt: "Enter lport"
      private: false
 
 - name: "ifconfig_l"
+  hosts: all
   vars_prompt:
    - name: "ip_l"
      prompt: "Enter ip local"
      private: false
 
 - name: "ifconfig_r"
+  hosts: all
   vars_prompt:
    - name: "ip_r"
      prompt: "Enter ip remote"
      private: false
 
 - name: "proto tcp"
+  hosts: all
   vars_prompt:
    - name: "type_tcp"
      prompt: "Enter type tcp"
