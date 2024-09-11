@@ -1,4 +1,16 @@
 ---
+- name: "server"
+  vars_prompt:
+   - name: "server"
+     prompt: "Enter server host"
+     private: false
+
+- name: "client"
+  vars_prompt:
+   - name: "client"
+     prompt: "Enter client host"
+     private: false
+
 - name: "host to openvpn install"
   hosts: "{{ select_hosts }}"
   become: true
@@ -50,6 +62,7 @@
      private: false
 
   roles:
-   - { role: "../roles/roles_DebARM/setting_new_server",                             tags: ["setting_server"] }
+   - { role: "../ansible/roles/openvpn"}
+   - { role: "../ansible/roles/iptables-iprules"}
 
 
