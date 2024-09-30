@@ -11,9 +11,9 @@
        - name: "select_hosts"
          prompt: "Enter hostname or group"
          private: false
-  roles:
-   - { role: "../ansible/roles/openvpn" }
-   - { role: "../ansible/roles/iptables-iprules" }
+      roles:
+       - { role: "../ansible/roles/openvpn" }
+       - { role: "../ansible/roles/iptables-iprules" }
 
 - name: "server"
   hosts: all
