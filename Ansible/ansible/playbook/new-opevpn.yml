@@ -6,22 +6,22 @@
 
     tasks:
             
-        - name: "host to openvpn install"
-          hosts: "{{ select_hosts }}"
-          become: true
-          vars_prompt:
+         - name: "host to openvpn install"
+           hosts: "{{ select_hosts }}"
+           become: true
+           vars_prompt:
            - name: "select_hosts"
              prompt: "Enter hostname or group"
              private: false
         
-        - name: "server"
+         - name: "server"
           hosts: all
           vars_prompt:
            - name: "server"
              prompt: "Enter server host"
              private: false
         
-        - name: "client"
+         - name: "client"
           hosts: all
           vars_prompt:
            - name: "client"
@@ -75,10 +75,9 @@
           vars_prompt:
            - name: "type_tcp"
              prompt: "Enter type tcp"
-             private: false
-        
-roles:
- - { role: "../ansible/roles/openvpn"}
- - { role: "../ansible/roles/iptables-iprules"}
+             private: false    
+  roles:
+   - { role: "../ansible/roles/openvpn"}
+   - { role: "../ansible/roles/iptables-iprules"}
         
         
