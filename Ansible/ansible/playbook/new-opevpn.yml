@@ -75,7 +75,7 @@
          prompt: "Enter type tcp"
          private: false    
   roles:
-   - { role: "../ansible/roles/openvpn"}
-   - { role: "../ansible/roles/iptables-iprules"}
+   - { role: "../ansible/roles/openvpn" }
+   - { role: "../ansible/roles/iptables-iprules" }
         
         
