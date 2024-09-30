@@ -20,11 +20,11 @@
          private: false
     
     - name: "client"
-     hosts: all
-     vars_prompt:
-      - name: "client"
-        prompt: "Enter client host"
-        private: false
+      hosts: all
+      vars_prompt:
+       - name: "client"
+         prompt: "Enter client host"
+         private: false
     
     - name: "tun number"
       hosts: all
