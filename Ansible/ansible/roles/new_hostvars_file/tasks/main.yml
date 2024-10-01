@@ -2,4 +2,4 @@
 - name: create new host vars file
   template: 
    src: hv.j2
-   dest: ./host_vars/{{ hostvarsname }}.yml
+   dest: /home/sintara/VM-Deploy/Ansible/ansible/host_vars{{ hostvarsname }}.yml
