@@ -5,6 +5,7 @@
   vars_prompt:
   - name: "hostvarsname"
     prompt: "Enter name of hostvars file"
+    private: false
   - name: "server"
     prompt: "Enter server host"
     private: false
