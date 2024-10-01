@@ -2,11 +2,7 @@
 - name: Add new host vars
   hosts: '{{ target | default("localhost") }}'
   become:  yes
-  tasks:
-   - name: "server"
-     hosts: all
-     vars_prompt:
-
+  vars_prompt:
       - name: "server"
         prompt: "Enter server host"
         private: false
@@ -42,3 +38,7 @@
       - name: "type_tcp"
         prompt: "Enter type tcp"
         private: false
+
+  roles:
+   { ./roles/new_hostvars_file/tasks/main.yml }
+     

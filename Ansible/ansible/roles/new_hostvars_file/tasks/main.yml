@@ -1,0 +1,5 @@
+---
+- name: create new host vars file
+  template: 
+   src: hv.j2
+   dest: ./host_vars/{{ target }}.yml
