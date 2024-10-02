@@ -9,7 +9,7 @@
   ansible.builtin.apt:
     name: openvpn
     state: present
-    delegate_to: "{{client}}"
+    delegate_to: "{{server}}"
 
 - name: copy config openvpn to client
   template: 
