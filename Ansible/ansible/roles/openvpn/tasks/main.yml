@@ -8,22 +8,34 @@
   template: 
    src: vpn_c.j2
    dest: /etc/openvpn/openvpn{{tun_num}}.conf
-#  delegate_to: {{client}}
+   delegate_to: "{{client}}"
 
-#- name: copy config openvpn to server
-#  template: 
-#   src: vpn_s.j2
-#   dest: /etc/openvpn/openvpn{{tun_num}}.conf
-#  delegate_to: {{server}}
+- name: copy config openvpn to server
+  template: 
+   src: vpn_s.j2
+   dest: /etc/openvpn/openvpn{{tun_num}}.conf
+   delegate_to: "{{server}}"
 
 - name: Keygen
-  ansible.builtin.shell: openvpn --genkey --secret /etc/openvpn/openvpn{{tun_num}}.key
+  ansible.builtin.shell: "openvpn --genkey --secret /etc/openvpn/openvpn{{tun_num}}.key"
   delegate_to: 127.0.0.1
 
-- name: copy config openvpn
+- name: copy key to client
   copy: 
    src: /etc/openvpn/openvpn{{tun_num}}.key
    dest: /etc/openvpn/openvpn{{tun_num}}.key
+   delegate_to: "{{client}}"
 
-- name: start openvpn config
+- name: copy key to server
+  copy: 
+   src: /etc/openvpn/openvpn{{tun_num}}.key
+   dest: /etc/openvpn/openvpn{{tun_num}}.key
+   delegate_to: "{{server}}"
+
+- name: start openvpn client config 
   ansible.builtin.shell: systemctl start openvpn@openvpn{{tun_num}}
+  delegate_to: "{{client}}"
+
+- name: start openvpn client config 
+  ansible.builtin.shell: systemctl start openvpn@openvpn{{tun_num}}
+  delegate_to: "{{server}}"
