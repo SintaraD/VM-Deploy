@@ -30,9 +30,6 @@
   - name: "ip_r"
     prompt: "Enter ip remote"
     private: false
-  - name: "type_tcp"
-    prompt: "Enter type tcp"
-    private: false
   roles:
   - { role: "./roles/new_hostvars_file" }
      
