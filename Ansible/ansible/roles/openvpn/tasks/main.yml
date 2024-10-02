@@ -1,8 +1,16 @@
 ---
-- name: install openvpn
+- name: install openvpn to client
   ansible.builtin.apt:
     name: openvpn
     state: present
+    delegate_to: "{{client}}"
+
+- name: install openvpn to server
+  ansible.builtin.apt:
+    name: openvpn
+    state: present
+    delegate_to: "{{client}}"
+
 
 - name: copy config openvpn to client
   template: 
