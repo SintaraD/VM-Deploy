@@ -7,10 +7,10 @@
     prompt: "Enter name of hostvars file"
     private: false
   - name: "server"
-    prompt: "Enter server host"
+    prompt: "Enter server host name (from inventory)"
     private: false
   - name: "client"
-    prompt: "Enter client host"
+    prompt: "Enter client host name (from inventory)"
     private: false
   - name: "tun_num"
     prompt: "Enter tun number"
