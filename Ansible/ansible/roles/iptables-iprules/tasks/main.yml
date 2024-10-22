@@ -5,13 +5,13 @@
  - name: iptables for client
    template:
      src: iptables-client.j2
-     dest: /etc/rc.locals/'{{ hostspair }}'.sh
+     dest: /etc/rc.locals/{{ hostspairname }}.sh
    delegate_to: '{{ client }}'
 
  - name: iptables for server
    template:
      src: iptables-server.j2
-     dest: /etc/rc.locals/'{{ hostspair }}'.sh
+     dest: /etc/rc.locals/{{ hostspairname }}.sh
    delegate_to: '{{ server }}'
 
  - name: rc.local run

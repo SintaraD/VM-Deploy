@@ -1,6 +1,6 @@
 ---
 - name: VPN Vars 
-  include_vars: .roles/openvpn/vars/'{{ varsfile }}'.yml
+  include_vars: .roles/openvpn/vars/{{ varsfile }}.yml
 
 - name: install openvpn to client
   ansible.builtin.apt:
