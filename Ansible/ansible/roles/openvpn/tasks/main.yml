@@ -3,7 +3,6 @@
   ansible.builtin.apt:
     name: openvpn
     state: present
-  vars_files: .roles/openvpn/vars/'{{ varsfile }}'.yml
   delegate_to: '{{ client }}'
 
 - name: install openvpn to server
