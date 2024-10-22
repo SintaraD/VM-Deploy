@@ -2,4 +2,4 @@
 - name: create new host vars file
   template: 
    src: hv.j2
-   dest: /home/sintara/VM-Deploy/Ansible/ansible/roles/openvpn/vars/{{ hostspair }}.yml
+   dest: /home/sintara/VM-Deploy/Ansible/ansible/roles/openvpn/vars/'{{ hostspair }}'.yml
