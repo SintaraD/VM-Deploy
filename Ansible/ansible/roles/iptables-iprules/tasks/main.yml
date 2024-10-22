@@ -6,12 +6,14 @@
    template:
      src: iptables-client.j2
      dest: /etc/rc.locals/{{ hostspairname }}.sh
+     mode: '0777'
    delegate_to: '{{ client }}'
 
  - name: iptables for server
    template:
      src: iptables-server.j2
      dest: /etc/rc.locals/{{ hostspairname }}.sh
+     mode: '0777'
    delegate_to: '{{ server }}'
 
  - name: rc.local run
