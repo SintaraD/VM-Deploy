@@ -3,7 +3,7 @@
   hosts: '{{ target | default("localhost") }}'
   become:  yes
   vars_prompt:
-  - name: "hosts-pair"
+  - name: "hostspair"
     prompt: "Enter name of hosts-pair file. [name_server+name_client] Example: srv1+hst1"
     private: false
   - name: "server"
