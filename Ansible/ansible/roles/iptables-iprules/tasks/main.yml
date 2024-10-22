@@ -2,15 +2,20 @@
  - name: iptables for client
    template:
      src: iptables-client.j2
-     dest: /etc/rc.local
-   when: inventory_hostname in groups[clients]
+     dest: /etc/rc.locals/{{ hosts-pair }}.sh
+   delegate_to: {{ client }}
 
  - name: iptables for server
    template:
      src: iptables-server.j2
-     dest: /etc/rc.local
-   when: inventory_hostname in groups[servers]
+     dest: /etc/rc.locals/{{ hosts-pair }}.sh
+   delegate_to: {{ server }}
 
  - name: rc.local run
    ansible.builtin.shell:  /etc/rc.local
+   delegate_to: {{ client }}
+
+ - name: rc.local run
+   ansible.builtin.shell:  /etc/rc.local
+   delegate_to: {{ server }}
 

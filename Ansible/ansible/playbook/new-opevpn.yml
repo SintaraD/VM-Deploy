@@ -1,12 +1,12 @@
 ---
 - name:  Openvpn
-  hosts:  '{{ target | default("localhost") }}'
+  hosts:  localhost
   become:  yes
   vars_prompt:
   - name: "varsfile"
     prompt: "Enter name of vars file"
     private: false
-  vars: {{ varsfile }}
+  vars: '{{ varsfile }}'
   roles:
    - { role: "../ansible/roles/openvpn" }
    - { role: "../ansible/roles/iptables-iprules" }
