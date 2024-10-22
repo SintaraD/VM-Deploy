@@ -16,7 +16,7 @@
     prompt: "Enter tun number"
     private: false
   - name: "ip_srv"
-    prompt: "Enter ip remote"
+    prompt: "Enter ip server"
     private: false
   - name: "rprt"
     prompt: "Enter rport"
