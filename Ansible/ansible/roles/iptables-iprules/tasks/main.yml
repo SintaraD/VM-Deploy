@@ -1,6 +1,6 @@
 ---
  - name: FW Vars 
-   include_vars: .roles/openvpn/vars/'{{ varsfile }}'.yml
+   include_vars: /home/sintara/VM-Deploy/Ansible/ansible/roles/openvpn/vars/{{ varsfile }}.yml
 
  - name: iptables for client
    template:
