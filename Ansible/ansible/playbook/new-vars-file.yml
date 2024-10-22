@@ -31,5 +31,5 @@
     prompt: "Enter ip remote"
     private: false
   roles:
-  - { role: "./roles/new_hostvars_file" }
+  - { role: "./roles/new_vars_file" }
      
