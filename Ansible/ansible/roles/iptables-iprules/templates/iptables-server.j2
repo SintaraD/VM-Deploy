@@ -1,3 +1,5 @@
+ipt='/sbin/iptables'
+isp='eth0'
 # OpenVPN
 $ipt -A INPUT -p udp --dport {{rprt}} -i $isp -j ACCEPT
 $ipt -A OUTPUT -p udp --sport {{lprt}} -o $isp -j ACCEPT

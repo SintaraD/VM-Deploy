@@ -16,10 +16,10 @@
      mode: '0777'
    delegate_to: '{{ server }}'
 
- - name: rc.local run
+ - name: rc.local run on client
    ansible.builtin.shell:  /etc/rc.local
    delegate_to: '{{ client }}'
 
- - name: rc.local run
+ - name: rc.local run on server
    ansible.builtin.shell:  /etc/rc.local
    delegate_to: '{{ server }}'
