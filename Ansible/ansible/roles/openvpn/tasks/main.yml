@@ -34,13 +34,13 @@
   copy: 
    src: /etc/openvpn/openvpn{{tun_num}}.key
    dest: /etc/openvpn/openvpn{{tun_num}}.key
-   delegate_to: '{{ client }}'
+  delegate_to: '{{ client }}'
 
 - name: copy key to server
   copy: 
    src: /etc/openvpn/openvpn{{tun_num}}.key
    dest: /etc/openvpn/openvpn{{tun_num}}.key
-   delegate_to: '{{ server }}'
+  delegate_to: '{{ server }}'
 
 - name: start openvpn client config no client
   ansible.builtin.shell: systemctl start openvpn@openvpn{{tun_num}}
