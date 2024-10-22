@@ -1,22 +1,6 @@
-#!/bin/sh
-
-# Vars
-ipt='/sbin/iptables'
-isp='eth0'
-
-# Flash all rules
-$ipt -t filter -F
-$ipt -t filter -X
-$ipt -t nat -F
-$ipt -t nat -X
-$ipt -t mangle -F
-$ipt -t mangle -X
-
 # OpenVPN
 $ipt -A INPUT -p udp --dport {{rprt}} -i $isp -j ACCEPT
 $ipt -A OUTPUT -p udp --sport {{lprt}} -o $isp -j ACCEPT
-
-# NAT
+# FWD
 $ipt -A FORWARD -i tun{{tun_num}} -o $isp -j ACCEPT
 $ipt -A FORWARD -o tun{{tun_num}} -i $isp -j ACCEPT
-$ipt -t nat -A POSTROUTING -o $isp -j MASQUERADE

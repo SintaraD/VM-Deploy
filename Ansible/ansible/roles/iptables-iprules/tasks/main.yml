@@ -3,13 +3,13 @@
    template:
      src: iptables-client.j2
      dest: /etc/rc.local
-   delegate_to: client
+   when: inventory_hostname in groups[clients]
 
  - name: iptables for server
    template:
      src: iptables-server.j2
      dest: /etc/rc.local
-   delegate_to: server
+   when: inventory_hostname in groups[servers]
 
  - name: rc.local run
    ansible.builtin.shell:  /etc/rc.local
