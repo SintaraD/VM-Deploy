@@ -6,7 +6,6 @@
   - name: "varsfile"
     prompt: "Enter name of vars file"
     private: false
-  vars_files: .roles/openvpn/vars/'{{ varsfile }}'.yml
   roles:
    - { role: "../ansible/roles/openvpn" }
    - { role: "../ansible/roles/iptables-iprules" }
